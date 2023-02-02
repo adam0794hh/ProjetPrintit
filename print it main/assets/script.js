@@ -26,42 +26,47 @@ let tag = document.querySelector('#banner p')
 
 arrowRight.addEventListener('click',function(){
 	// alert('Droite')
-	
-	counter = (counter + 1) % slides.length
+
+	counter = counter + 1
+	if (counter === slides.length){
+		counter = 0
+	}
 	img.src = slides[counter].image;
-	//let tag = document.querySelector('#banner p')
 	tag.innerHTML = slides[counter].tagLine
 	let bullet = document.querySelectorAll('.dot')
-	for (let i = 0; i < bullet.length; i++) {
-		bullet[i].classList.remove("dot_selected");
+	for (let i = 0; i < bullet.length; i++){
+		bullet[i].classList.remove('dot_selected')
 	}
-	
-	const activeIndex = counter
+	let activeIndex = counter
 	bullet[activeIndex].classList.add("dot_selected");
+	
 	
 })
 
 const arrowLeft = document.querySelector('.arrow_left');
-arrowLeft.addEventListener('click',function(){
-	//alert('Gauche')
-	let img = document.querySelector('.banner-img');
-	//counter = (counter - 1 + slides.length) % slides.length;
-	counter = counter - 1
-	if (counter === 0){
-		counter = 4;
-	}
-	img.src = slides[counter].image;
-	let tag = document.querySelector('#banner p')
-	tag.innerHTML = slides[counter].tagLine
-	let bullet = document.querySelectorAll('.dot')
-	for (let i = 0; i < bullet.length; i++) {
-		bullet[i].classList.remove("dot_selected");
-		const activeIndex = counter;
-		bullet[activeIndex].classList.add("dot_selected");
-	}
-	
-	
-})
+
+arrowLeft.addEventListener('click', function() {
+counter = counter - 1;
+if (counter < 0) {
+counter = slides.length - 1;
+}
+img.src = slides[counter].image;
+tag.innerHTML = slides[counter].tagLine;
+let bullet = document.querySelectorAll('.dot')
+for (let i = 0; i < bullet.length; i++){
+	bullet[i].classList.remove('dot_selected')
+}
+let activeIndex = counter
+bullet[activeIndex].classList.add("dot_selected");
+});
+
+
+
+
+
+
+
+
 
  
 
