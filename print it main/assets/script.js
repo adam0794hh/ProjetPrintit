@@ -18,10 +18,20 @@ const slides = [
 	}
 	
 ]
+let counter = 0;
+for (let i = 0; i < slides.length; i++){
+	let div = document.createElement("div")
+	div.classList.add("dot")
+	let dotContainer = document.querySelector(".dots")
+	dotContainer.appendChild(div)
+	if (i === 0){
+		div.classList.add("dot_selected")
+	}
+}
 
 const arrowRight = document.querySelector('.arrow_right');
 let img = document.querySelector('.banner-img');
-let counter = 0;
+
 let tag = document.querySelector('#banner p')
 
 arrowRight.addEventListener('click',function(){
@@ -35,12 +45,10 @@ arrowRight.addEventListener('click',function(){
 	tag.innerHTML = slides[counter].tagLine
 	let bullet = document.querySelectorAll('.dot')
 	for (let i = 0; i < bullet.length; i++){
-		bullet[i].classList.remove('dot_selected')
-	}
-	let activeIndex = counter
-	bullet[activeIndex].classList.add("dot_selected");
-	
-	
+ 	bullet[i].classList.remove('dot_selected')
+ }
+
+ bullet[counter].classList.add("dot_selected");
 })
 
 const arrowLeft = document.querySelector('.arrow_left');
@@ -56,8 +64,8 @@ let bullet = document.querySelectorAll('.dot')
 for (let i = 0; i < bullet.length; i++){
 	bullet[i].classList.remove('dot_selected')
 }
-let activeIndex = counter
-bullet[activeIndex].classList.add("dot_selected");
+
+bullet[counter].classList.add("dot_selected");
 });
 
 
