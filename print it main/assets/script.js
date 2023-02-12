@@ -18,6 +18,7 @@ const slides = [
 	}
 	
 ]
+// creation des bullets
 let counter = 0;
 for (let i = 0; i < slides.length; i++){
 	let div = document.createElement("div")
